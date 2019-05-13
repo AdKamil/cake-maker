@@ -20,7 +20,8 @@
               <router-link
                 v-for="(navLink, index) in navLinks"
                 :key="index"
-                :to="navLink.path">{{ navLink.title }}
+                :to="navLink.path"
+                exact>{{ navLink.title }}
               </router-link>
             </li>
           </ul>
@@ -30,8 +31,9 @@
       <v-navigation-drawer
         v-model="drawer"
         temporary
-        absolute
+        fixed
         class="nav-drawer"
+        style="max-height: 100vh; z-index: 101"
       >
         <v-list dense class="pt-0 nav-drawer__list">
           <v-list-tile
@@ -52,9 +54,7 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-container fluid>
-        <router-view />
-      </v-container>
+      <router-view />
     </v-content>
   </v-app>
 </template>
@@ -78,14 +78,15 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-h1 {
+h1, h2, h3 {
   font-family: 'Lobster', serif;
   color: #fff;
 }
 
-h3, h4, h5, p, span {
+h4, h5, p, span {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
+  font-weight: 700;
 }
 
 #app {
@@ -106,6 +107,7 @@ h3, h4, h5, p, span {
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
 
   &__logo {
     text-decoration: none;
