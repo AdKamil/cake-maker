@@ -55,6 +55,13 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.occasion {
+  &__title {
+    color: #000;
+  }
+  &__img {
+    height: 100px;
+  }
+}
 </style>
