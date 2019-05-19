@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="create-cake">
     <v-container fluid>
       <v-layout>
         <v-flex class="header">
-          <h2 class="header__title">Wybierz okoliczność</h2>
+          <h1 class="header__title">{{ configuratorTitle }}</h1>
         </v-flex>
       </v-layout>
     </v-container>
-    <v-layout px-2>
+    <v-layout px-2 fill-height>
       <transition :name="transitionName" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -23,6 +23,11 @@ export default {
       transitionName: 'slide-left',
     };
   },
+  computed: {
+    configuratorTitle() {
+      return this.$store.getters.configuratorTitle;
+    },
+  },
   methods: {
   },
   beforeRouteUpdate(to, from, next) {
@@ -35,6 +40,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.create-cake {
+  height: 100%;
+}
 .header {
   &__title {
     text-align: center;

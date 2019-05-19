@@ -30,6 +30,21 @@ export default new Router({
           name: 'chooseCake',
           component: () => import('./components/configurator/ChooseCake.vue'),
         },
+        {
+          path: '/create-cake/:cat/:id',
+          name: 'chooseTaste',
+          component: () => import('./components/configurator/ChooseTaste.vue'),
+        },
+        {
+          path: '/create-cake/:cat/:id/:taste/weight',
+          name: 'chooseWeight',
+          component: () => import('./components/configurator/ChooseWeight.vue'),
+        },
+        {
+          path: '/create-cake/:cat/:id/:taste/weight/delivery',
+          name: 'choosePlace',
+          component: () => import('./components/configurator/ChoosePlace.vue'),
+        },
       ],
     },
   ],

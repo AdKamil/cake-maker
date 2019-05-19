@@ -1,6 +1,6 @@
 <template>
   <v-app class="main-wrapper">
-    <v-content>
+    <v-content fill-height>
       <div class="nav">
         <router-link class="nav__logo" to="/">
           <h1>teletorty</h1>
@@ -14,13 +14,15 @@
           <v-icon light color="#fff">fas fa-bars</v-icon>
         </v-btn>
 
-        <div class="hidden-sm-and-down">
-          <ul>
-            <li>
+        <div class="hidden-sm-and-down desktop-nav">
+          <ul class="desktop-nav__ul">
+            <li
+              class="desktop-nav__li"
+              v-for="(navLink, index) in navLinks"
+              :key="index">
               <router-link
-                v-for="(navLink, index) in navLinks"
-                :key="index"
                 :to="navLink.path"
+                class="desktop-nav__link"
                 exact>{{ navLink.title }}
               </router-link>
             </li>
@@ -123,6 +125,27 @@ h4, h5, p, span {
   &__list-title {
     text-align: right;
     font-size: 18px;
+  }
+}
+
+.desktop-nav {
+
+  &__ul {
+    padding-right: 15px;
+    display: flex;
+  }
+
+  &__li {
+    list-style-type: none;
+    padding-left: 15px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
   }
 }
 </style>
