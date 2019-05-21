@@ -21,27 +21,27 @@ export default new Router({
 
       children: [
         {
-          path: '',
-          name: 'chooseOccasion',
-          component: () => import('./components/configurator/ChooseOccasion.vue'),
-        },
-        {
-          path: '/create-cake/:cat',
-          name: 'chooseCake',
-          component: () => import('./components/configurator/ChooseCake.vue'),
-        },
-        {
-          path: '/create-cake/:cat/:id',
-          name: 'chooseTaste',
-          component: () => import('./components/configurator/ChooseTaste.vue'),
-        },
-        {
-          path: '/create-cake/:cat/:id/:taste/weight',
+          path: '/create-cake',
           name: 'chooseWeight',
           component: () => import('./components/configurator/ChooseWeight.vue'),
         },
         {
-          path: '/create-cake/:cat/:id/:taste/weight/delivery',
+          path: '/create-cake/weight/:weight',
+          name: 'chooseOccasion',
+          component: () => import('./components/configurator/ChooseOccasion.vue'),
+        },
+        {
+          path: '/create-cake/weight/:weight/:cat',
+          name: 'chooseCake',
+          component: () => import('./components/configurator/ChooseCake.vue'),
+        },
+        {
+          path: '/create-cake/weight/:weight/:cat/:id',
+          name: 'chooseTaste',
+          component: () => import('./components/configurator/ChooseTaste.vue'),
+        },
+        {
+          path: '/create-cake/weight/:weight/:cat/:id/:taste/delivery',
           name: 'choosePlace',
           component: () => import('./components/configurator/ChoosePlace.vue'),
         },

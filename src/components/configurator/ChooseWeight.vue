@@ -58,8 +58,12 @@ export default {
   },
   methods: {
     chooseWeight() {
+      this.$store.commit('setPriceByWeight', this.weight);
       this.$router.push({
-        name: 'choosePlace',
+        name: 'chooseOccasion',
+        params: {
+          weight: this.weight,
+        },
       });
     },
   },

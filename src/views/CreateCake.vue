@@ -9,6 +9,7 @@
             </v-icon>
           </v-btn>
           <h1 class="header__title">{{ configuratorTitle }}</h1>
+          <p class="header__current-price">{{ currentPrice }}</p>
         </v-flex>
       </v-layout>
     </v-container>
@@ -31,6 +32,12 @@ export default {
   computed: {
     configuratorTitle() {
       return this.$store.getters.configuratorTitle;
+    },
+    currentPrice() {
+      if (this.$store.getters.currentPrice !== null) {
+        return `PLN ${this.$store.getters.currentPrice.toFixed(2)}`;
+      }
+      return '';
     },
   },
   methods: {
@@ -60,6 +67,13 @@ export default {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &__current-price {
+    position: absolute;
+    right: 0;
+    top: calc(50% - 8px);
+    opacity: .6
   }
 }
 

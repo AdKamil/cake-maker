@@ -14,6 +14,8 @@
             :key="location.id"
             :coordinates="location.marker"
             color="#e19ba2"
+            anchor="bottom"
+            @click="select(location.id)"
           />
         </MglMap>
       </v-card>
@@ -40,6 +42,34 @@
         </template>
       </v-card>
     </v-flex>
+    <v-snackbar
+      v-if="$vuetify.breakpoint.mdAndDown"
+      v-model="snackbar"
+      :timeout="10000"
+    >
+      Wybrales: {{ snackbarAdress }}
+      <v-btn
+        dark
+        flat
+        @click="snackbar = false"
+      >
+        wybierz datę
+      </v-btn>
+    </v-snackbar>
+    <v-snackbar
+      v-else
+      v-model="snackbar"
+      :timeout="5000"
+    >
+      Wybrales: {{ snackbarAdress }}
+      <v-btn
+        dark
+        flat
+        @click="snackbar = false"
+      >
+        zamknij
+      </v-btn>
+    </v-snackbar>
   </v-layout>
 </template>
 
@@ -59,6 +89,8 @@ export default {
       mapStyle: 'mapbox://styles/mapbox/streets-v10',
       selected: null,
       zoom: 11,
+      snackbar: false,
+      snackbarAdress: '',
     };
   },
   computed: {
@@ -79,6 +111,8 @@ export default {
       const selectedLocation = this._.find(this.locations, { id });
       this.centerCoordinates = selectedLocation.marker;
       this.zoom = 12;
+      this.snackbarAdress = selectedLocation.address;
+      this.snackbar = true;
     },
   },
   created() {

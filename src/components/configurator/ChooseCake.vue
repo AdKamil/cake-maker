@@ -5,7 +5,7 @@
       md4
       pa-2
       v-for="(cake, index) in cakesFiltered"
-      @click="chooseCake(cake.id)"
+      @click="chooseCake(cake.id, cake.pricePerCake)"
       :key="index">
       <v-hover>
         <v-card
@@ -49,12 +49,13 @@ export default {
   methods: {
     filterCakes() {
       for (let i = 0; i < this.cakes.length; i += 1) {
-        if (this.$route.path.split('/')[2] === this.cakes[i].cat) {
+        if (this.$route.params.cat === this.cakes[i].cat) {
           this.cakesFiltered.push(this.cakes[i]);
         }
       }
     },
-    chooseCake(cakeId) {
+    chooseCake(cakeId, price) {
+      this.$store.commit('setPriceByCake', price);
       const currentOccasion = this.$route.params.cat;
       this.$router.push({
         name: 'chooseTaste',

@@ -1,4 +1,4 @@
-/* eslint no-param-reassign: ["error", { "props": false }] */
+/* eslint-disable */
 
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -8,6 +8,24 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     configuratorTitle: '',
+    configuredCake: {
+      cake: {
+        cat: '',
+        id: null,
+        name: '',
+        img: '',
+        price: null,
+      },
+      taste: {
+        id: null,
+        name: '',
+        img: '',
+        price: null,
+      },
+      price: null,
+      weight: null,
+    },
+    pricePerKilo: 40,
     occasions: [
       {
         name: 'ślub/wesele',
@@ -42,6 +60,7 @@ export default new Vuex.Store({
         img: 'TO-320-300.jpg',
         cat: 'other',
         tastes: [1, 2, 4],
+        pricePerCake: 1,
       },
       {
         id: 2,
@@ -49,6 +68,7 @@ export default new Vuex.Store({
         img: 'TO-338-300.jpg',
         cat: 'other',
         tastes: [1, 3, 4],
+        pricePerCake: 1.15,
       },
       {
         id: 3,
@@ -56,6 +76,7 @@ export default new Vuex.Store({
         img: 'TO-310-300.jpg',
         cat: 'other',
         tastes: [1, 3, 5],
+        pricePerCake: 1.2,
       },
       {
         id: 4,
@@ -63,6 +84,7 @@ export default new Vuex.Store({
         img: 'TW-001-623.jpg',
         cat: 'wedding',
         tastes: [2, 3, 5],
+        pricePerCake: 1,
       },
       {
         id: 5,
@@ -70,6 +92,7 @@ export default new Vuex.Store({
         img: 'TW-001-619.jpg',
         cat: 'wedding',
         tastes: [2, 3, 4, 5],
+        pricePerCake: 1.15,
       },
       {
         id: 6,
@@ -77,6 +100,7 @@ export default new Vuex.Store({
         img: 'TW-001-620.jpg',
         cat: 'wedding',
         tastes: [2, 3, 4, 6],
+        pricePerCake: 1.2,
       },
     ],
     tastes: [
@@ -84,26 +108,31 @@ export default new Vuex.Store({
         id: 1,
         name: 'Biszkopt waniliowy, bita śmietana, wiśnie, poncz',
         img: 'cream-cherries.jpg',
+        pricePerTaste: 1.1,
       },
       {
         id: 2,
         name: 'Biszkopt waniliowy, bita śmietana, poncz',
         img: 'vanilla.jpg',
+        pricePerTaste: 1.0,
       },
       {
         id: 3,
         name: 'Biszkopt waniliowy, bita śmietana, owoce, poncz',
         img: 'cream-fruits.jpg',
+        pricePerTaste: 1.1,
       },
       {
         id: 4,
         name: 'Biszkopt czekoladowy, bita śmietana, mus porzeczkowy, poncz',
         img: 'blackcurrant.jpg',
+        pricePerTaste: 1.15,
       },
       {
         id: 5,
         name: 'Biszkopt czekoladowy, bita śmietana, wiśnie, poncz',
         img: 'cherry-chocolate.jpg',
+        pricePerTaste: 1.15,
       },
     ],
     locations: [
@@ -134,11 +163,13 @@ export default new Vuex.Store({
     ],
   },
   getters: {
+    pricePerKilo: state => state.pricePerKilo,
     occasions: state => state.occasions,
     cakes: state => state.cakes,
     tastes: state => state.tastes,
     configuratorTitle: state => state.configuratorTitle,
     locations: state => state.locations,
+    currentPrice: state => state.configuredCake.price,
   },
   mutations: {
     chooseOccasion: (state, payload) => {
@@ -146,6 +177,21 @@ export default new Vuex.Store({
     },
     setConfigurationTitle: (state, payload) => {
       state.configuratorTitle = payload;
+    },
+    setPriceByWeight: (state, payload) => {
+      state.configuredCake.weight = payload;
+      state.configuredCake.price = state.pricePerKilo * payload;
+    },
+    setPriceByCake: (state, payload) => {
+      state.configuredCake.cake.price = payload;
+      state.configuredCake.price = state.pricePerKilo * state.configuredCake.weight * payload;
+    },
+    setPriceByTaste: (state, payload) => {
+      state.configuredCake.price =
+        state.pricePerKilo
+        * state.configuredCake.weight
+        * state.configuredCake.cake.price
+        * payload;
     },
   },
   actions: {},

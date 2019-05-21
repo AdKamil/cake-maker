@@ -51,7 +51,12 @@ export default {
   },
   methods: {
     chooseOccasion(slug) {
-      this.$router.push(`/create-cake/${slug}`);
+      this.$router.push({
+        name: 'chooseCake',
+        params: {
+          cat: slug,
+        },
+      });
     },
   },
   beforeCreate() {
