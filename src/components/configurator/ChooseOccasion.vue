@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  height: 100%;
 
   &--clickable {
     cursor: pointer;

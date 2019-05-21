@@ -106,12 +106,39 @@ export default new Vuex.Store({
         img: 'cherry-chocolate.jpg',
       },
     ],
+    locations: [
+      {
+        id: 1,
+        title: 'Jędryka',
+        address: 'Piastowska 78, Częstochowa',
+        marker: [19.1035627, 50.7956766],
+      },
+      {
+        id: 2,
+        title: 'Jędryka',
+        address: 'aleja Wolności 12, Częstochowa',
+        marker: [19.1156691, 50.8100666],
+      },
+      {
+        id: 3,
+        title: 'Jędryka',
+        address: 'Generała Stanisława Sosabowskiego 21, Częstochowa',
+        marker: [19.1304955, 50.8471224],
+      },
+      {
+        id: 4,
+        title: 'Jędryka',
+        address: 'Świętego Rocha 56, Częstochowa',
+        marker: [19.0867299, 50.8186278],
+      },
+    ],
   },
   getters: {
     occasions: state => state.occasions,
     cakes: state => state.cakes,
     tastes: state => state.tastes,
     configuratorTitle: state => state.configuratorTitle,
+    locations: state => state.locations,
   },
   mutations: {
     chooseOccasion: (state, payload) => {

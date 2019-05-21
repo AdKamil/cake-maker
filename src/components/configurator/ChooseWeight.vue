@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap mb-5 justify-center align-center>
     <v-flex
-      xs6
+      xs12
       md4
       pa-2
     >

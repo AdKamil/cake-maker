@@ -3,11 +3,16 @@
     <v-container fluid>
       <v-layout>
         <v-flex class="header">
+          <v-btn class="header__go-back" flat icon @click="$router.go(-1)">
+            <v-icon fas color="white">
+              fa-chevron-left
+            </v-icon>
+          </v-btn>
           <h1 class="header__title">{{ configuratorTitle }}</h1>
         </v-flex>
       </v-layout>
     </v-container>
-    <v-layout px-2 fill-height>
+    <v-layout px-2>
       <transition :name="transitionName" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -44,8 +49,17 @@ export default {
   height: 100%;
 }
 .header {
+  position: relative;
+
+  &__go-back {
+    position: absolute;
+    left: -20px;
+  }
+
   &__title {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

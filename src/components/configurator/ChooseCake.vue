@@ -75,6 +75,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card {
+  height: 100%;
+
+  &--clickable {
+    cursor: pointer;
+  }
+}
 .cake {
   &__title {
     color: #333;
