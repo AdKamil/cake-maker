@@ -68,6 +68,7 @@ export default {
     },
   },
   beforeCreate() {
+    this.$store.commit('resetPrice');
     this.$store.commit('setConfigurationTitle', 'Wybierz wagę');
   },
 };

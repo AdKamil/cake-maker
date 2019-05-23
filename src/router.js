@@ -45,6 +45,11 @@ export default new Router({
           name: 'choosePlace',
           component: () => import('./components/configurator/ChoosePlace.vue'),
         },
+        {
+          path: '/create-cake/weight/:weight/:cat/:id/:taste/delivery/date',
+          name: 'chooseDate',
+          component: () => import('./components/configurator/ChooseDate.vue'),
+        },
       ],
     },
   ],

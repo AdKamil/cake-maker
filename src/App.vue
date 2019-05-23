@@ -69,7 +69,7 @@ export default {
       drawer: null,
       navLinks: [
         { title: 'home', path: '/' },
-        { title: 'create cake', path: '/create-cake' },
+        { title: 'zamów tort', path: '/create-cake' },
       ],
     };
   },

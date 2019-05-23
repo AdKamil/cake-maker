@@ -41,6 +41,7 @@
           <v-divider v-if="location.id < locations.length" :key="location.address"></v-divider>
         </template>
       </v-card>
+      <v-btn @click="chooseDate">Wybierz</v-btn>
     </v-flex>
     <v-snackbar
       v-if="$vuetify.breakpoint.mdAndDown"
@@ -113,6 +114,11 @@ export default {
       this.zoom = 12;
       this.snackbarAdress = selectedLocation.address;
       this.snackbar = true;
+    },
+    chooseDate() {
+      this.$router.push({
+        name: 'chooseDate',
+      });
     },
   },
   created() {

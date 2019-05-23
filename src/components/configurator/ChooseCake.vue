@@ -5,7 +5,7 @@
       md4
       pa-2
       v-for="(cake, index) in cakesFiltered"
-      @click="chooseCake(cake.id, cake.pricePerCake)"
+      @click="chooseCake(cake.id, cake.pricePerCake, cake)"
       :key="index">
       <v-hover>
         <v-card
@@ -54,7 +54,7 @@ export default {
         }
       }
     },
-    chooseCake(cakeId, price) {
+    chooseCake(cakeId, price, cake) {
       this.$store.commit('setPriceByCake', price);
       const currentOccasion = this.$route.params.cat;
       this.$router.push({
@@ -64,6 +64,7 @@ export default {
           cat: currentOccasion,
         },
       });
+      this.$store.commit('setCake', cake);
     },
   },
   mounted() {

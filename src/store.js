@@ -14,13 +14,13 @@ export default new Vuex.Store({
         id: null,
         name: '',
         img: '',
-        price: null,
+        pricePerCake: null,
       },
       taste: {
         id: null,
         name: '',
         img: '',
-        price: null,
+        pricePerTaste: null,
       },
       price: null,
       weight: null,
@@ -170,10 +170,17 @@ export default new Vuex.Store({
     configuratorTitle: state => state.configuratorTitle,
     locations: state => state.locations,
     currentPrice: state => state.configuredCake.price,
+    configuredCake: state => state.configuredCake,
   },
   mutations: {
     chooseOccasion: (state, payload) => {
       this.state.chosenOccasion = payload;
+    },
+    setCake: (state, payload) => {
+      state.configuredCake.cake = payload;
+    },
+    setTaste: (state, payload) => {
+      state.configuredCake.taste = payload;
     },
     setConfigurationTitle: (state, payload) => {
       state.configuratorTitle = payload;
@@ -193,6 +200,7 @@ export default new Vuex.Store({
         * state.configuredCake.cake.price
         * payload;
     },
+    resetPrice: (state) => state.configuredCake.price = null,
   },
   actions: {},
 });

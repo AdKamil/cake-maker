@@ -11,7 +11,7 @@
           class="card card--clickable"
           slot-scope="{ hover }"
           :class="`elevation-${hover ? 12 : 2}`"
-          @click="chooseTaste(taste.id, taste.pricePerTaste)"
+          @click="chooseTaste(taste.id, taste.pricePerTaste, taste)"
         >
           <v-img
             :src="`/img/tastes/${taste.img}`"
@@ -73,12 +73,13 @@ export default {
       }
       this.currentTastes = tempTastes;
     },
-    chooseTaste(taste, price) {
+    chooseTaste(tasteId, price, taste) {
       this.$store.commit('setPriceByTaste', price);
+      this.$store.commit('setTaste', taste);
       this.$router.push({
         name: 'choosePlace',
         params: {
-          taste,
+          taste: tasteId,
         },
       });
     },
