@@ -2,8 +2,8 @@
   <v-app class="main-wrapper">
     <v-content fill-height>
       <div class="nav">
-        <router-link class="nav__logo" to="/">
-          <h1>teletorty</h1>
+        <router-link class="nav__logo-wrapper" to="/">
+          <h1 class="nav__logo">teletorty</h1>
         </router-link>
         <v-btn
           flat
@@ -111,9 +111,13 @@ h4, h5, p, span {
   width: 100%;
   z-index: 100;
 
-  &__logo {
+  &__logo-wrapper {
     text-decoration: none;
-    color: #fff;
+    color:#404b55 !important;
+  }
+
+  &__logo {
+    color:#404b55 !important;
   }
 }
 
@@ -142,7 +146,7 @@ h4, h5, p, span {
 
   &__link {
     text-decoration: none;
-    color: #fff;
+    color:#404b55;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 16px;

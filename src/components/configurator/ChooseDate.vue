@@ -1,6 +1,6 @@
 <template>
-  <v-layout row wrap pt-3 mb-5>
-    <v-flex xs12 md8 pa-2 pb-5>
+  <v-layout row wrap justify-space-between pt-3 mb-5>
+    <v-flex xs12 md8 lg5 pa-2 pb-5>
       <h2>Twoje zamówienie</h2>
       <v-card class="mt-5">
         <v-list two-line>
@@ -64,6 +64,7 @@
         v-model="date"
         locale="pl-pl"
         class="mt-3"
+        width="100%"
         :min="blockedDate"
       ></v-date-picker>
     </v-flex>
