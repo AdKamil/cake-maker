@@ -22,6 +22,12 @@ export default new Vuex.Store({
         img: '',
         pricePerTaste: null,
       },
+      location: {
+        id: null,
+        title: '',
+        address: '',
+        marker: [],
+      },
       price: null,
       weight: null,
     },
@@ -194,7 +200,6 @@ export default new Vuex.Store({
       state.configuredCake.price = state.pricePerKilo * state.configuredCake.weight * payload;
     },
     setPriceByTaste: (state, payload) => {
-      console.log(payload);
       state.configuredCake.price =
         state.pricePerKilo
         * state.configuredCake.weight
@@ -202,6 +207,9 @@ export default new Vuex.Store({
         * payload;
     },
     resetPrice: (state) => state.configuredCake.price = null,
+    setLocation: (state, payload) => {
+      state.configuredCake.location = payload;
+    },
   },
   actions: {},
 });

@@ -27,10 +27,10 @@
             <v-list-tile
               avatar
               ripple
-              @click="select(location.id)"
+              @click="select(location)"
               slot-scope="{ hover }"
               class="list-item"
-              :class="`${hover || selected === location.id ? 'hover' : ''}`"
+              :class="`${hover || selected.id === location.id ? 'hover' : ''}`"
             >
               <v-list-tile-content>
                 <v-list-tile-title>{{ location.title }}</v-list-tile-title>
@@ -41,7 +41,7 @@
           <v-divider v-if="location.id < locations.length" :key="location.address"></v-divider>
         </template>
       </v-card>
-      <v-btn @click="chooseDate">Wybierz</v-btn>
+      <v-btn @click="choosePlace">Wybierz</v-btn>
     </v-flex>
     <v-snackbar
       v-if="$vuetify.breakpoint.mdAndDown"
@@ -52,7 +52,7 @@
       <v-btn
         dark
         flat
-        @click="snackbar = false"
+        @click="choosePlace"
       >
         wybierz datę
       </v-btn>
@@ -88,7 +88,7 @@ export default {
         'pk.eyJ1IjoiYWR2ZXJ0aWQiLCJhIjoiY2p2djd4c2Y2MDk1bzQ4cW52djg3NHduZSJ9.Xqk-MDJrx8cj6iqKYZiQEg',
       centerCoordinates: [19.1156691, 50.8100666],
       mapStyle: 'mapbox://styles/mapbox/streets-v10',
-      selected: null,
+      selected: {},
       zoom: 11,
       snackbar: false,
       snackbarAdress: '',
@@ -107,15 +107,16 @@ export default {
         `Wybierz jeden z ${locationsNumber} punktów odbioru`,
       );
     },
-    select(id) {
-      this.selected = id;
-      const selectedLocation = this._.find(this.locations, { id });
-      this.centerCoordinates = selectedLocation.marker;
+    select(selected) {
+      this.selected = selected;
+      // const selectedLocation = this._.find(this.locations, { id });
+      this.centerCoordinates = selected.marker;
       this.zoom = 12;
-      this.snackbarAdress = selectedLocation.address;
+      this.snackbarAdress = selected.address;
       this.snackbar = true;
     },
-    chooseDate() {
+    choosePlace() {
+      this.$store.commit('setLocation', this.selected);
       this.$router.push({
         name: 'chooseDate',
       });
