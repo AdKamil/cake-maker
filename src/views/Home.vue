@@ -39,7 +39,8 @@
           <v-layout row wrap>
             <v-flex xs12>
               <h1 class="main-section2__title">torty to nasza pasja</h1>
-              <p class="main-section2__paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p class="main-section2__paragraph">Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna
                 aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                 ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -48,13 +49,13 @@
                 Excepteur sint occaecat cupidatat non proident, sunt in
                 culpa qui officia deserunt mollit anim id est laborum.</p>
             </v-flex>
-            <v-flex xs12 class="mt-4 main-section3__img-wrapper">
+            <v-flex xs12 class="mt-5 main-section3__img-wrapper">
               <img
                 src="/img/main-image3.png"
                 class="main-section2__img"
                 alt="Michaś teletorty">
             </v-flex>
-            <v-flex xs12 class="mt-4 main-section3__img-wrapper">
+            <v-flex xs12 class="mt-5 main-section3__img-wrapper">
               <img
                 src="/img/main-image2.png"
                 class="main-section2__img"
@@ -70,13 +71,13 @@
                 class="mt-4 main-section2__img"
                 alt="Michaś teletorty">
             </v-flex>
-            <v-flex xs12 class="mt-4 main-section3__img-wrapper">
+            <v-flex xs12 class="mt-5 main-section3__img-wrapper">
               <img
                 src="/img/main-image4.png"
                 class="main-section2__img"
                 alt="Michaś teletorty">
             </v-flex>
-            <v-flex xs12 class="mt-4 main-section3__img-wrapper">
+            <v-flex xs12 class="mt-5 main-section3__img-wrapper">
               <img
                 src="/img/main-image1.png"
                 class="main-section2__img"

@@ -194,10 +194,11 @@ export default new Vuex.Store({
       state.configuredCake.price = state.pricePerKilo * state.configuredCake.weight * payload;
     },
     setPriceByTaste: (state, payload) => {
+      console.log(payload);
       state.configuredCake.price =
         state.pricePerKilo
         * state.configuredCake.weight
-        * state.configuredCake.cake.price
+        * state.configuredCake.cake.pricePerCake
         * payload;
     },
     resetPrice: (state) => state.configuredCake.price = null,
