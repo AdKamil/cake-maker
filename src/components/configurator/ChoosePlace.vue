@@ -15,7 +15,7 @@
             :coordinates="location.marker"
             color="#e19ba2"
             anchor="bottom"
-            @click="select(location.id)"
+            @click="select(location)"
           />
         </MglMap>
       </v-card>
